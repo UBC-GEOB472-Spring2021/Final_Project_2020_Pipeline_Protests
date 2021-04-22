@@ -4,7 +4,7 @@
 ![](map1.png)
 
 [Link to Map 1: Coastal GasLink Route Through Wet’suwet’en Territory](https://ubc-geob472-spring2021.github.io/Final_Project_2020_Pipeline_Protests/Map_1.html)
-
+![](map2.png)
 
 
 [Link to Map 2: Coastal GasLink Impacts on the Wet'suwet'en Nation](https://ubc-geob472-spring2021.github.io/Final_Project_2020_Pipeline_Protests/Map_2.html)
