@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>CGL Pipeline Impacts on Indigenous CommmunitiesMap</title>
+<title>CGL Pipeline's Impacts on Wet'suwet'en Nation Map</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
@@ -67,7 +67,7 @@ background: #3074a4;
   position: absolute;
   z-index: 1;
 }
-	
+
 .legend {
 background: rgba(255, 255, 255, 0.8);
 border-radius: 3px;
@@ -106,13 +106,13 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 <div id="map_legend" class="legend"> <!-- Create a legend with colors correspond to the layers -->
       <div><span style="background-color: #de2d26"></span>Coastal Gaslink Pipeline</div>
       <div><span style="background-color: #B798B8"></span>Wet’suwet’en Traditional Territory</div>
-      <div><span style="background-color: #3794B3"></span>Short Term Water Use Permits</div>
       <div><span style="background-color: #2B2D2F"></span>Work Camps</div>
+      <div><span style="background-color: #7fc97f"></span>Short Term Water Use Permits</div>
       <div><span style="background-color: #A6611A"></span>Caribou Populations</div>
       <div><span style="background-color: #4575B4"></span>Salmon Spawning Zones</div>
-    </div>	
-	
-	
+    </div>
+
+
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1Ijoic3V5dWhlIiwiYSI6ImNrbHNmZndyNjBlY3Uybm8xNmZnZXJpazAifQ.IZA0sJHchmn7ons_NxGJtg';
 var map = new mapboxgl.Map({
@@ -178,7 +178,7 @@ map.on('load', function () {
   },
   'paint': {
 'circle-radius': 3,
-'circle-color': 'rgba(55,148,179,1)',
+'circle-color': 'rgba(127,201,127,1)',
   }
   });
 
@@ -238,7 +238,7 @@ map.on('load', function () {
   });
 
 // enumerate ids of the layers
-var toggleableLayerIds = ['Short Term Water Use Permits', 'Work Camps', 'Caribou Populations', 'Salmon Spawning Zones'];
+var toggleableLayerIds = ['Work Camps', 'Short Term Water Use Permits', 'Caribou Populations', 'Salmon Spawning Zones'];
 
 // set up the corresponding toggle button for each layer
 for (var i = 0; i < toggleableLayerIds.length; i++) {
