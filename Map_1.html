@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Costal Gaslink Pipeline Route Through Wet’suwet’en Territory</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<style>
+#menu {
+background: #fff;
+position: absolute;
+z-index: 1;
+top: 10px;
+right: 10px;
+border-radius: 3px;
+width: 120px;
+border: 1px solid rgba(0, 0, 0, 0.4);
+font-family: 'Open Sans', sans-serif;
+}
+
+#menu a {
+font-size: 13px;
+color: #404040;
+display: block;
+margin: 0;
+padding: 0;
+padding: 10px;
+text-decoration: none;
+border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+text-align: center;
+}
+
+#menu a:last-child {
+border: none;
+}
+
+#menu a:hover {
+background-color: #f8f8f8;
+color: #404040;
+}
+
+#menu a.active {
+background-color: #3887be;
+color: #ffffff;
+}
+
+#menu a.active:hover {
+background: #3074a4;
+}
+
+.features {
+  background-color: rgb(246,246,246, 0.75);
+  border-radius: 3px;
+  top: 10px;
+  left: 50px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font: 14px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+.legend {
+background: rgba(255, 255, 255, 0.8);
+border-radius: 3px;
+bottom: 30px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+padding: 10px;
+position: absolute;
+right: 10px;
+z-index: 1;
+}
+
+.legend h4 {
+margin: 0 0 10px;
+}
+
+.legend div span {
+border-radius: 50%;
+display: inline-block;
+height: 10px;
+margin-right: 5px;
+width: 10px;
+}
+</style>
+
+<nav id="menu"></nav>
+<div id="map"></div>
+<div id='features' class=features>
+  <h4>Costal Gaslink Pipeline Route Through Wet’suwet’en Territory </h4>
+	<div id="pd"><p>Turn layers on and off using the toggle buttons in the upper right corner.</p></div>
+	<div id="pd"><p>Click on the red star icons for additional information about each stage of the pipeline.</p></div>
+</div>
+	
+<div id="map_legend" class="legend"> <!-- Create a legend with colors correspond to the layers -->
+      <div><span style="background-color: #000000"></span>Coastal Gaslink Pipeline</div>
+      <div><span style="background-color: #e16b05"></span>Wet’suwet’en Traditional Territory</div>
+      <div><span style="background-color: #1307b0"></span>British Columbia Oil & Gas Pipelines</div>
+    </div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoianlnIiwiYSI6ImNra3Z3Z3MwdjFqcGQycXFtdG1vdGFrZ3QifQ.KoQNW0jmg00W5oanO5FS9g';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/jyg/ckmz8keiu2ipl17o5jz5of6r0',
+zoom: 6.2,
+center: [-126.040696, 54.515699]
+});
+
+// Wait until the map has finished loading.
+map.on('load', function () {
+// Add source and layer for museums.
+map.addSource('coastal-gaslink-pipeline', {
+type: 'vector',
+url: 'mapbox://jyg.388vtana'
+});
+map.addLayer({
+'id': 'coastal-gaslink-pipeline',
+'type': 'line',
+'source': 'coastal-gaslink-pipeline',
+//'source-layer': 'Coastal_GasLink_Pipeline-0tv3ov',
+'layout': {
+// Make the layer visible by default.
+'visibility': 'visible'
+},
+'paint': {
+//'circle-radius': 8,
+'line-color': 'rgba(0,0,0,100)'
+},
+'source-layer': 'CGL_pipeline_digitized2-al5xp2'
+});
+
+
+// Add source and layer for contours.
+map.addSource('bc-general-pipeline', {
+type: 'vector',
+url: 'mapbox://jyg.8efkyz3s'
+});
+map.addLayer({
+'id': 'bc-general-pipeline',
+'type': 'line',
+'source': 'bc-general-pipeline',
+'source-layer': 'BC_general_pipeline-4y919e',
+'layout': {
+// Make the layer visible by default.
+'visibility': 'visible',
+//'line-join': 'round',
+//'line-cap': 'round'
+},
+'paint': {
+'line-color': '#1307b0',
+//'line-width': 1
+}
+});
+
+// Add source and layer for contours.
+map.addSource('wetsuweten-territory', {
+type: 'vector',
+url: 'mapbox://jyg.bq9x3mpo'
+});
+map.addLayer({
+'id': 'wetsuweten-territory',
+'type': 'fill',
+'source': 'wetsuweten-territory',
+'source-layer': 'Wetsuweten_Territory-26xps6',
+'layout': {
+// Make the layer visible by default.
+'visibility': 'visible',
+//'line-join': 'round',
+//'line-cap': 'round'
+},
+'paint': {
+	'fill-color': '#e16b05'
+//'line-color': '#877b59',
+//'line-width': 1
+},
+//'source-layer': 'Wetsuweten_Territory-26xps6',
+});
+});
+
+// After the last frame rendered before the map enters an "idle" state.
+map.on('idle', function () {
+// If these two layers have been added to the style,
+// add the toggle buttons.
+if (map.getLayer('coastal-gaslink-pipeline') && map.getLayer('wetsuweten-territory') && map.getLayer('bc-general-pipeline')) {
+// Enumerate ids of the layers.
+var toggleableLayerIds = ['coastal-gaslink-pipeline', 'wetsuweten-territory', 'bc-general-pipeline'];
+// Set up the corresponding toggle button for each layer.
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+var id = toggleableLayerIds[i];
+if (!document.getElementById(id)) {
+// Create a link.
+var link = document.createElement('a');
+link.id = id;
+link.href = '#';
+link.textContent = id;
+link.className = 'active';
+// Show or hide layer when the toggle is clicked.
+link.onclick = function (e) {
+var clickedLayer = this.textContent;
+e.preventDefault();
+e.stopPropagation();
+
+var visibility = map.getLayoutProperty(
+clickedLayer,
+'visibility'
+);
+
+// Toggle layer visibility by changing the layout object's visibility property.
+if (visibility === 'visible') {
+map.setLayoutProperty(
+clickedLayer,
+'visibility',
+'none'
+);
+this.className = '';
+} else {
+this.className = 'active';
+map.setLayoutProperty(
+clickedLayer,
+'visibility',
+'visible'
+);
+}
+};
+
+var layers = document.getElementById('menu');
+layers.appendChild(link);
+}
+}
+}
+});
+
+//create popups
+map.on('click', 'pipeline-popups', function(e) {
+var features = map.queryRenderedFeatures(e.point, {
+layers: ['pipeline-popups'] // replace this with the name of the layer
+});
+
+if (!features.length) {
+return;
+}
+
+var feature = features[0];
+
+var popup = new mapboxgl.Popup({ offset: [0, -15] })
+.setLngLat(feature.geometry.coordinates)
+.setHTML('<h3>' + feature.properties.Title + '</h3><p>' + feature.properties.description + '</p>' + feature.properties.des2 + '</p>'+ feature.properties.des3 + '</p>')
+.addTo(map);
+});
+
+map.on("mouseenter", "pipeline-popups", () => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+
+        map.on("mouseleave", "pipeline-popups", () => {
+          map.getCanvas().style.cursor = "";
+        });
+
+</script>
+
+</body>
+</html>
