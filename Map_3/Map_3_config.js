@@ -6,7 +6,7 @@ const config = {
 	theme: 'light',
 	use3dTerrain: true,
 	title: '2020 Canadian Pipeline and Railway Protests Timeline',
-	subtitle: 'The Ongoing Struggle for Reconciliation and Respect of Indigenous Rights',
+	subtitle: 'The Ongoing Struggle for Respect of Indigenous Rights',
 	byline: 'By Joshua Green',
 	footer: ' ',
 	chapters: [{
