@@ -1,7 +1,6 @@
 # Spatial Narratives of the 2020 Coastal GasLink Pipeline Protests & the Impacts of Extraction industries across BC
 
-Link to Group Essay
-
+[Link to Group Essay](https://arcg.is/ODH0y)
 ![](map1.png)
 
 [Link to Map 1: Coastal GasLink Route Through Wet’suwet’en Territory](https://ubc-geob472-spring2021.github.io/Final_Project_2020_Pipeline_Protests/Map_1.html)
