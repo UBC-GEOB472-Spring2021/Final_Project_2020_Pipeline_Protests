@@ -1,4 +1,4 @@
-# Spatial Narratives of the 2020 Coastal GasLink Pipeline Protests & the Impacts of Extraction industries across BC
+# Spatial Narratives of the 2020 Coastal GasLink Pipeline Protests & the Impacts of Extraction Industries Across BC
 
 [Link to Group Essay](https://arcg.is/ODH0y)
 ![](map1.png)
