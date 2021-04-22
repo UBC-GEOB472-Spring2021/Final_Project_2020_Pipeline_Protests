@@ -2,7 +2,7 @@
 
 Link to Group Essay
 
-![](mapCGL.png)
+![](map1.png)
 
 [Link to Map 1: Coastal GasLink Route Through Wet’suwet’en Territory](https://jagreen1.github.io/2020_Pipeline_Protest_Story/Map%201/index-testing8.html?fbclid=IwAR0ynp1Q88RQeuVDRthdedLzfcsewGaw3NrooVI7iRbAiCFO8AW9OmYUpjE)
 
