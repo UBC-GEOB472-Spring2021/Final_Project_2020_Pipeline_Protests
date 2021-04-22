@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CGL Pipeline Impacts on Indigenous CommmunitiesMap</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+</style>
+</head>
+<body>
+<style>
+#menu {
+background: #fff;
+position: absolute;
+z-index: 1;
+top: 10px;
+right: 55px;
+border-radius: 3px;
+width: 120px;
+border: 1px solid rgba(0, 0, 0, 0.4);
+font-family: 'Open Sans', sans-serif;
+}
+
+#menu a {
+font-size: 13px;
+color: #404040;
+display: block;
+margin: 0;
+padding: 0;
+padding: 10px;
+text-decoration: none;
+border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+text-align: center;
+}
+
+#menu a:last-child {
+border: none;
+}
+
+#menu a:hover {
+background-color: #f8f8f8;
+color: #404040;
+}
+
+#menu a.active {
+background-color: #3887be;
+color: #ffffff;
+}
+
+#menu a.active:hover {
+background: #3074a4;
+}
+
+.features {
+  background-color: rgb(246,246,246, 0.75);
+  border-radius: 3px;
+  top: 10px;
+  left: 50px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font: 14px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+	
+.legend {
+background: rgba(255, 255, 255, 0.8);
+border-radius: 3px;
+bottom: 30px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+padding: 10px;
+position: absolute;
+right: 10px;
+z-index: 1;
+}
+
+.legend h4 {
+margin: 0 0 10px;
+}
+
+.legend div span {
+border-radius: 50%;
+display: inline-block;
+height: 10px;
+margin-right: 5px;
+width: 10px;
+}
+
+.mapboxgl-popup {
+max-width: 400px;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+</style>
+
+<nav id="menu"></nav>
+<div id="map"></div>
+<div id='features' class=features>
+  <h4>CGL Pipeline's Impacts on Wet'suwet'en Nation </h4>To turn layers on and off, click on the toggle buttons in the upper right corner.</div>
+
+<div id="map_legend" class="legend"> <!-- Create a legend with colors correspond to the layers -->
+      <div><span style="background-color: #de2d26"></span>Coastal Gaslink Pipeline</div>
+      <div><span style="background-color: #B798B8"></span>Wet’suwet’en Traditional Territory</div>
+      <div><span style="background-color: #3794B3"></span>Short Term Water Use Permits</div>
+      <div><span style="background-color: #2B2D2F"></span>Work Camps</div>
+      <div><span style="background-color: #A6611A"></span>Caribou Populations</div>
+      <div><span style="background-color: #4575B4"></span>Salmon Spawning Zones</div>
+    </div>	
+	
+	
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1Ijoic3V5dWhlIiwiYSI6ImNrbHNmZndyNjBlY3Uybm8xNmZnZXJpazAifQ.IZA0sJHchmn7ons_NxGJtg';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/suyuhe/cknrtbc8t031w17myy8do3laj',
+center: [-126.446337, 54.251238],
+zoom: 5.5
+});
+
+map.addControl(new mapboxgl.NavigationControl());
+
+map.on('load', function () {
+  map.addSource('Wet’suwet’en Territory', {
+  type: 'vector',
+  url: 'mapbox://suyuhe.7egq7f1s'
+  });
+  map.addLayer({
+  'id': 'Wet’suwet’en Territory',
+  'type': 'fill',
+  'source': 'Wet’suwet’en Territory',
+  'layout': {
+  // make layer visible by default
+  'visibility': 'visible'
+  },
+  'paint': {
+    "fill-color": "rgba(183,152,184,0.75)"
+  },
+  'source-layer': 'Wetsuweten_Territory-8ptx1d'
+  });
+
+  // add source and layer for contours
+  map.addSource('Coastal Gaslink Pipeline', {
+  type: 'vector',
+  url: 'mapbox://suyuhe.9ji0x3zp'
+  });
+  map.addLayer({
+  'id': 'Coastal Gaslink Pipeline',
+  'type': 'line',
+  'source': 'Coastal Gaslink Pipeline',
+  'source-layer': 'CGL_pipeline_digitized2-d8smue',
+  'layout': {
+  // make layer visible by default
+  'visibility': 'visible',
+  },
+  'paint': {
+  'line-color': '#de2d26',
+  'line-width': 4
+  }
+  });
+
+  map.addSource('Short Term Water Use Permits', {
+  type: 'vector',
+  url: 'mapbox://suyuhe.cjkh7nai'
+  });
+  map.addLayer({
+  'id': 'Short Term Water Use Permits',
+  'type': 'circle',
+  'source': 'Short Term Water Use Permits',
+  'source-layer': 'short_term_water_use_permitte-3tz3yu',
+  'layout': {
+  // make layer visible by default
+  'visibility': 'visible',
+  },
+  'paint': {
+'circle-radius': 3,
+'circle-color': 'rgba(55,148,179,1)',
+  }
+  });
+
+  map.addSource('Caribou Populations', {
+  type: 'vector',
+  url: 'mapbox://suyuhe.39tcs5ac'
+  });
+  map.addLayer({
+  'id': 'Caribou Populations',
+  'type': 'fill',
+  'source': 'Caribou Populations',
+  'layout': {
+  // make layer visible by default
+  'visibility': 'visible'
+  },
+  'paint': {
+    "fill-color": "rgba(166,97,26,0.7)"
+  },
+  'source-layer': 'map-dvfkjl'
+  });
+
+  map.addSource('Salmon Spawning Zones', {
+  type: 'vector',
+  url: 'mapbox://suyuhe.2rkl0jiy'
+  });
+  map.addLayer({
+  'id': 'Salmon Spawning Zones',
+  'type': 'fill',
+  'source': 'Salmon Spawning Zones',
+  'layout': {
+  // make layer visible by default
+  'visibility': 'visible'
+  },
+  'paint': {
+    "fill-color": "rgba(69,117,180,0.5)"
+  },
+  'source-layer': 'se_spwng_zoi_fraser-6nq7b33'
+  });
+
+  map.addSource('Work Camps', {
+  type: 'vector',
+  url: 'mapbox://suyuhe.drhdc22w'
+  });
+  map.addLayer({
+  'id': 'Work Camps',
+  'type': 'circle',
+  'source': 'Work Camps',
+  'source-layer': 'Workcamps_egis_nwbc_2019_05_01',
+  'layout': {
+  // make layer visible by default
+  'visibility': 'visible',
+  },
+  'paint': {
+'circle-radius': 3,
+'circle-color': 'rgba(43,45,47,0.8)',
+  }
+  });
+
+// enumerate ids of the layers
+var toggleableLayerIds = ['Short Term Water Use Permits', 'Work Camps', 'Caribou Populations', 'Salmon Spawning Zones'];
+
+// set up the corresponding toggle button for each layer
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+var id = toggleableLayerIds[i];
+
+var link = document.createElement('a');
+link.href = '#';
+link.className = 'active';
+link.textContent = id;
+
+link.onclick = function (e) {
+var clickedLayer = this.textContent;
+e.preventDefault();
+e.stopPropagation();
+
+var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+// toggle layer visibility by changing the layout object's visibility property
+if (visibility === 'visible') {
+map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+this.className = '';
+} else {
+this.className = 'active';
+map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+}
+};
+
+var layers = document.getElementById('menu');
+layers.appendChild(link);
+}
+
+// When a click event occurs on a feature in the places layer, open a popup at the
+// location of the feature, with description HTML from its properties.
+map.on('click', 'places', function (e) {
+var coordinates = e.features[0].geometry.coordinates.slice();
+var description = e.features[0].properties.description;
+
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+
+}
+
+new mapboxgl.Popup()
+.setLngLat(coordinates)
+.setHTML(description)
+.addTo(map);
+
+map.flyTo({
+center: e.features[0].geometry.coordinates
+});
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'places', function () {
+map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'places', function () {
+map.getCanvas().style.cursor = '';
+});
+});
+</script>
+
+</body>
+</html>
